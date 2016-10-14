@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
   def index
-    @spaces = Space.all
+    @space = Space.all
   end
 
   def new
