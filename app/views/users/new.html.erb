@@ -1,0 +1,18 @@
+
+<h3>Sign Up</h3>
+
+<%= form_for @user do |f| %>
+  <div>
+    <span class="label label-default"></span><%= f.text_field :name, placeholder: "Full Name", size: "35x10" %>
+  </div>
+  <br>
+  <div>
+    <span class="label label-default"></span><%= f.text_field :email, placeholder: "Email", size: "35x10" %>
+  </div>
+  <br>
+  <div>
+    <span class="label label-default"></span><%= f.password_field :password, placeholder: "Password", size: "35x10" %>
+  </div>
+  <br>
+  <div class="userSubmitButton"><%= f.submit "Submit" %></div>
+<% end %>
