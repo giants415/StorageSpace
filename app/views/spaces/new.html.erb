@@ -1,0 +1,11 @@
+<h1> Create a listing </h1>
+
+<%= form_for @space do |f| %>
+  <%= f.text_field :title, placeholder: "Listing Name" %>
+  <%= f.number_field :price, in: 1.00..3000.00, placeholder: "Price" %>
+  <%= f.text_field :address, placeholder: "eg. 123 Sample Lane, Sample City, Sample State, 55555" %>
+  <%= f.number_field :size, in: 10.0..200, placeholder: "Estimated Square Feet" %>
+  <%= f.text_area :description, placeholder: "Describe your space" %>
+  <%= f.text_field :photo, placeholder: "Upload a photo" %>
+  <%= f.submit "Create A Listing" %>
+<% end %>
