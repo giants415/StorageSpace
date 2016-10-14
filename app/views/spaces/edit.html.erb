@@ -1,3 +1,13 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Logo</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="sass.html">Sass</a></li>
+      <li><a href="badges.html">Components</a></li>
+      <li><a href="collapsible.html">JavaScript</a></li>
+    </ul>
+  </div>
+</nav>
 <h1> Edit your listing </h1>
 
 <%= form_for @space do |f| %>
@@ -7,5 +17,5 @@
   <%= f.number_field :size, in: 10.0..200, placeholder: "Estimated Square Feet" %>
   <%= f.text_area :description, placeholder: "Describe your space" %>
   <%= f.text_field :photo, placeholder: "Upload a photo" %>
-  <%= f.submit "Save your changes" %>
+  <%= f.submit "Save your changes", :class => "waves-effect waves-light btn" %>
 <% end %>
