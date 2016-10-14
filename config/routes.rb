@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   delete "/users/:id", to: "users#destroy", as: "destroy_user"
 
   resources :spaces
+
+  resources :transactions
+
 end
