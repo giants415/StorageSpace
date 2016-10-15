@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   patch "/users/:id", to: "users#update"
   delete "/users/:id", to: "users#destroy", as: "destroy_user"
 
-  resources :spaces
-
-  resources :transactions
+  resources :spaces do
+    resources :transactions
+  end
 
 end

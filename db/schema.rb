@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014191606) do
+ActiveRecord::Schema.define(version: 20161014231751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20161014191606) do
 
   create_table "transactions", force: :cascade do |t|
     t.string   "stripe_id"
-    t.integer  "renter_id"
+    t.integer  "user_id"
     t.integer  "space_id"
     t.datetime "start_date"
     t.datetime "end_date"
