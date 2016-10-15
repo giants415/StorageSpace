@@ -9,24 +9,55 @@
   </head>
 
   <body>
-    <nav>
-      <div class="nav-wrapper">
-        <p class="brand-logo"><%= link_to "StorageSpace", root_path %></p>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <header>
+      <nav>
+        <div class="nav-wrapper">
+          <p class="brand-logo"><%= link_to "StorageSpace", root_path %></p>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-          <% if current_user %>
-          <li><%= link_to "Profile", user_path(current_user) %></li>
-          <li><%= link_to "Log Out", logout_path %></li>
+            <% if current_user %>
+            <li><%= link_to "Profile", user_path(current_user) %></li>
+            <li><%= link_to "Log Out", logout_path %></li>
 
-          <% else %>
-          <li><%= link_to "Log In", login_path %></li>
-          <li><%= link_to "Sign Up", new_user_path %></li>
+            <% else %>
+            <li><%= link_to "Log In", login_path %></li>
+            <li><%= link_to "Sign Up", new_user_path %></li>
 
-          <% end %>
-        </ul>
-      </div>
-    </nav>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+  <main>
 
     <%= yield %>
+
+  </main>
+
+    <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l10 s12">
+          <h5 class="white-text">Footer Content</h5>
+          <p class="grey-text text-lighten-4">[content]</p>
+        </div>
+        <div class="col l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2016 StorageSpace
+      <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+      </div>
+    </div>
+  </footer>
+
   </body>
 </html>
