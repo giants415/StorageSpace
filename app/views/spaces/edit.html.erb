@@ -7,5 +7,5 @@
   <%= f.number_field :size, in: 10.0..200, placeholder: "Estimated Square Feet" %>
   <%= f.text_area :description, placeholder: "Describe your space" %>
   <%= f.text_field :photo, placeholder: "Upload a photo" %>
-  <%= f.submit "Save your changes" %>
+  <%= f.submit "Save your changes", :class => "waves-effect waves-light btn" %>
 <% end %>
