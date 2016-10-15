@@ -1,0 +1,13 @@
+<h2><%= @user.name %></h2>
+<br>
+<h2><%= @user.email %></h2>
+
+<% if @user == current_user %>
+  <%= button_to "Edit Profile", edit_user_path, method: "get" %>
+  <br>
+  <%= button_to "Delete Profile", destroy_user_path, method: "delete", data: {confirm: "Are you sure you want to delete the profile for #{ @user.name }?"} %>
+<% end %>
+<br>
+<% if current_user && admin %>
+  <%= button_to 'Remove User', destroy_user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{ @user.name }?"} %>
+<% end %>

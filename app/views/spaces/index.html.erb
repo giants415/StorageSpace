@@ -1,0 +1,23 @@
+<h1 class="center-align"> All Spaces Available <h1>
+<div class="divider"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="card medium">
+      <div class="card-image">
+        <img src="http://l18airpark.com/l18_airpark_images/10%20x%2012.jpg">
+      </div>
+      <div class="card-content">
+        <% @space.each do |space| %>
+        <span class="card-title"> <%= space.title %> </span>
+        <%= space.price %>
+        <%= space.size %>
+      </div>
+      <div class="card-reveal">
+        <%= space.available %>
+        <%= space.description %>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

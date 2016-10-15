@@ -1,0 +1,37 @@
+<h1>Information</h1>
+<li>Renter <%= current_user %></li>
+<li>Rentee <%= @space.user_id %></li>
+
+<h1>Agreement</h1>
+<li>Price: <%= @space.price %></li>
+<li>Space: <%= @space.title %></li>
+
+
+<%= form_for [@space, @transaction] do |f| %>
+  <div>
+    <span class="label label-default"></span><%= f.text_field :start_date, placeholder: "Start Date", size: "35x10" %>
+  </div>
+  <br>
+  <div>
+    <span class="label label-default"></span><%= f.text_field :end_date, placeholder: "End Date", size: "35x10" %>
+  </div>
+  <br>
+  <div>
+    <span class="label label-default"></span><%= f.text_field :space_id, value: "", size: "35x10" %>
+  </div>
+  <br>
+  <div>
+    <span class="label label-default"></span><%= f.text_field :user_id, value: current_user.id, size: "35x10" %>
+  </div>
+  <br>
+  <div>
+    <span class="label label-default"></span><%= f.text_field :stripe_id, value: "", size: "35x10" %>
+  </div>
+  <br>
+  <div class="userSubmitButton"><%= f.submit "Submit" %></div>
+<% end %>
+
+
+
+<%#= link_to "Book Listing", transaction_path, method: "post", data: {space_id:@space.id, user_id:current_user.id, stripe_id:1}%>
+
