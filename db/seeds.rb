@@ -22,6 +22,8 @@ space1 = Space.create({user_id: 1, title: "Zach Test Listing", price: 20, addres
 space2 = Space.create({user_id: 2, title: "Alicia Test Listing", price: 25, address: "1001 Sample Rd, SF, CA 945394", size: 25, available: true, photo: "http://l18airpark.com/l18_airpark_images/10%20x%2012.jpg", description: "Cool and well list space in a closet"})
 space3 = Space.create({user_id: 3, title: "Andrew Test Listing", price: 30, address: "1002 Sample Rd, SF, CA 945394", size: 30, available: true, photo: "http://l18airpark.com/l18_airpark_images/10%20x%2012.jpg", description: "Cool and well list space in a closet"})
 
+p "Seeds have been updated"
+
 # space1 = Space.create({user_id: "", })
 #
 #
