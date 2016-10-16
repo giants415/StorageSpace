@@ -8,4 +8,8 @@ class User < ApplicationRecord
   @user ? @user.authenticate(params[:password]) : false
   end
   validates :email, uniqueness:true
+
+  has_attached_file :avatar, styles: { thumb: "100x100>" }, default_url: "empty_profile.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
 end

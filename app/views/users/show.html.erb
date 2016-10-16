@@ -1,5 +1,7 @@
 <h2><%= @user.name %></h2>
 <br>
+<%= image_tag @user.avatar.url(:thumb) %>
+<br>
 <h2><%= @user.email %></h2>
 
 <% if @user == current_user %>
