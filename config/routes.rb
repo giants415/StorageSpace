@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'errors/not_found'
 
-  root to: "users#index"
+  root to: "spaces#index"
 
   get "/login", to: "sessions#new"
   post "/sessions", to: "sessions#create"

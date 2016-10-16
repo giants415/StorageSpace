@@ -1,18 +1,26 @@
 
-<h3>Sign Up</h3>
+<div class= "container">
+  <div class= "row">
+    <div class="col l4 offset-l4 s12">
 
-<%= form_for @user do |f| %>
-  <div>
-    <span class="label label-default"></span><%= f.text_field :name, placeholder: "Full Name", size: "35x10" %>
+      <h3>Sign Up</h3>
+
+      <%= form_for @user do |f| %>
+        <div>
+          <span class="label label-default"></span><%= f.text_field :name, placeholder: "Full Name" %>
+        </div>
+        <br>
+        <div>
+          <span class="label label-default"></span><%= f.text_field :email, placeholder: "Email" %>
+        </div>
+        <br>
+        <div>
+          <span class="label label-default"></span><%= f.password_field :password, placeholder: "Password" %>
+        </div>
+        <br>
+        <div class="userSubmitButton"><%= f.submit "Submit", :class => "btn waves-effect waves-light" %></div>
+      <% end %>
+
+    </div>
   </div>
-  <br>
-  <div>
-    <span class="label label-default"></span><%= f.text_field :email, placeholder: "Email", size: "35x10" %>
-  </div>
-  <br>
-  <div>
-    <span class="label label-default"></span><%= f.password_field :password, placeholder: "Password", size: "35x10" %>
-  </div>
-  <br>
-  <div class="userSubmitButton"><%= f.submit "Submit" %></div>
-<% end %>
+</div>
