@@ -22,3 +22,17 @@
     </div>
   </div>
 </div>
+    <div class="map_container">
+      <div class='sidebar pad2'>Listing</div>
+      <div id='map' class='map pad2'>Map</div>
+    </div>
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoiempmb25nIiwiYSI6ImNpdWQycDFldjAwN2gydG1wYjRuNHAyOTIifQ.U97c40oCoSUNVwei9HqTgg';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/zjfong/ciud2sovs00362inwfcp45fbp',
+    center: [-122.444910, 37.763688],
+    zoom: 12
+  });
+</script>
