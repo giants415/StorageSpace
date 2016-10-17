@@ -4,10 +4,6 @@ class WelcomeMailer < ApplicationMailer
 
   def welcome_email(user)
     @user = user
-    mail(to @user.email,
-        subect: 'Welcome to Storage Space!') do |format|
-      format.html { render 'welcome_email' }
-      format.text { render text: 'welcome_email' }
-    end
+    mail(to: @user.email, subject: 'Welcome to Storage Space!')
   end
 end
