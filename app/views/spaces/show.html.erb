@@ -1,12 +1,28 @@
-<h1> <%= @space.title %> </h1>
-<%= @space.price %>
-<%= @space.address %>
-<%= @space.size %>
-<%= @space.available %>
-<%= @space.description %>
-<%= @space.photo %>
-<br>
-<% if current_user %>
+<div class = "container">
+  <h1 class = "center-align"> <%= @space.title %> </h1>
+  <div class="carousel carousel-slider single_listing">
+    <a class="carousel-item" href="#one!"><img src="<%= @space.photo %>"></a>
+    <a class="carousel-item" href="#two!"><img src="<%= @space.photo %>"></a>
+    <a class="carousel-item" href="#three!"><img src="<%= @space.photo %>"></a>
+    <a class="carousel-item" href="#four!"><img src="<%= @space.photo %>"></a>
+  </div>
+  <div class = "row">
+    <p>Price: $<%= @space.price %></p>
+    <div class="row">
+      <div class="col s4">
+        <p><%= @space.street_address %></p>
+        <p><%= @space.city %></p>
+        <p><%= @space.state %></p>
+        <p><%= @space.zip_code %></p>
+      </div>
+    </div>
+    <div class = "row">
+      <p>Space Available: <%= @space.size %> sq. ft.</p>
+      <p>About This Space</p>
+      <hr>
+      <p><%= @space.description %></p>
+    </div>
+    <% if current_user %>
   <%= button_to "Rent this space", new_space_transaction_path(@space), method: "get", class: "waves-effect waves-light btn" %>
 
 <% else %>
@@ -17,3 +33,7 @@
    to rent this space
  </h5>
 <% end %>
+  </div>
+</div>
+
+

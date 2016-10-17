@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col l5 offset-l1">
       <br>
-     <%= image_tag @user.avatar.url(:thumb) %>
+      <%= image_tag @user.avatar.url(:thumb) %>
       <hr>
       <% if @user == current_user %>
         <div class="row">
@@ -20,8 +20,8 @@
           </div>
         </div>
       <% end %>
-
     </div>
+
     <div class="col l6">
       <h2><%= @user.name %></h2>
       <br>
@@ -30,7 +30,7 @@
   </div>
   <div class="row">
     <div class="col l5 offset-l1">
-      <h3>Your space listings:</h3>
+      <h3>Your spaces:</h3>
       <hr>
     </div>
     <div class="col l6">
@@ -44,7 +44,7 @@
         <div>
           <ul>
             <li><strong>Space:  </strong><%= space.title %></li>
-            <li><strong>Address:  </strong><%= space.address %></li>
+            <li><strong>Address:  </strong><%= space.street_address %></li>
             <li><strong>Price per month:  </strong><%= space.price %></li>
             <li><strong>Square footage:  </strong><%= space.size %></li>
             <li><strong>Availability:  </strong><%= space.available ? "Available" : "Not Available" %></li>
@@ -59,7 +59,7 @@
           <ul>
             <li><strong>Space:  </strong><%= Space.find_by_id(transaction.space_id).title %></li>
             <li><strong>Owner:  </strong><%= User.find_by_id(transaction.user_id).name %></li>
-            <li><strong>Address:  </strong><%= Space.find_by_id(transaction.space_id).address %></li>
+            <li><strong>Address:  </strong><%= Space.find_by_id(transaction.space_id).street_address %></li>
             <li><strong>Price per month:  </strong><%= Space.find_by_id(transaction.space_id).price %></li>
             <li><strong>Square footage:  </strong><%= Space.find_by_id(transaction.space_id).size %></li>
             <li><strong>Start date:  </strong><%= transaction.start_date %></li>

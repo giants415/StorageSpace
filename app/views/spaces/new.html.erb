@@ -1,38 +1,50 @@
-
 <div class= "container">
+  <h1 class = "center-align"> Create a listing </h1>
   <div class= "row">
-    <div class="col l8 offset-l2 s12">
-      <h1> Create a listing </h1>
-      <%= form_for(@space, as: :space, method: :post) do |f| %>
-        <div class = "input-field">
-          <%= f.text_field :title %>
-          <label>Listing Name</label>
+    <%= form_for(@space, as: :space, method: :post) do |f| %>
+      <div class = "input-field">
+        <%= f.text_field :title %>
+        <label>Listing Name</label>
+      </div>
+      <div class = "input-field">
+        <%= f.number_field :price, in: 1.00..3000.00 %>
+        <label>Price</label>
+      </div>
+      <div class = "row">
+        <div class = "input-field col s3">
+          <input id="address" type="text" class="validate">
+          <label for= "address">Street Address</label>
         </div>
-        <div class = "input-field">
-          <%= f.number_field :price, in: 1.00..3000.00 %>
-          <label>Price</label>
+        <div class = "input-field col s3">
+          <input id="city" type="text" class="validate">
+          <label for= "city">City</label>
         </div>
-        <div class = "input-field">
-          <%= f.text_field :address, placeholder: "eg. 123 Sample Lane, Sample City, Sample State, 55555" %>
-          <label>Address</label>
+        <div class = "input-field col s3">
+          <input id="state" type="text" class="validate">
+          <label for= "state">State</label>
         </div>
-        <div class = "input-field">
-          <%= f.number_field :size, in: 10.0..200 %>
-          <label>Estimated Square Feet of Space</label>
+        <div class = "input-field col s3">
+          <input id="zipCode" type="text" class="validate">
+          <label for= "zipCode">Zip Code</label>
         </div>
-        <div class = "input-field">
-          <%= f.text_area :description, :class => "materialize-textarea" %>
-          <label>Describe the Space</label>
-        </div>
-        <div class = "input-field">
-          <%= f.text_field :photo %>
-          <label>Upload a photo</label>
-        </div>
-        <div class = "input-field">
-          <%= f.hidden_field :user_id, value: current_user.id %>
-        </div>
-        <%= f.submit "Create A Listing", :class => "btn waves-effect waves-light" %>
-      <% end %>
-    </div>
+      </div>
+      <div class = "input-field">
+        <%= f.number_field :size, in: 10.0..200 %>
+        <label>Estimated Square Feet of Space</label>
+      </div>
+      <div class = "input-field">
+        <%= f.text_area :description, :class => "materialize-textarea" %>
+        <label>Describe the Space</label>
+      </div>
+      <div class = "input-field">
+        <%= f.text_field :photo %>
+        <label>Upload a photo</label>
+      </div>
+      <div class = "input-field">
+        <%= f.number_field :user_id %>
+        <label>User ID</label>
+      </div>
+      <%= f.submit "Create A Listing", :class => "btn waves-effect waves-light" %>
+    <% end %>
   </div>
 </div>

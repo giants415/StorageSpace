@@ -10,11 +10,13 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= materialize.scss
  *= require_tree .
  *= require_self
  */
 
  @import "materialize";
+ @import "materialize/components/icons-material-design";
 
   body {
     display: flex;
@@ -71,3 +73,4 @@
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+
