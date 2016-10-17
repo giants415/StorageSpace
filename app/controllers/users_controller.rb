@@ -14,11 +14,13 @@ class UsersController < ApplicationController
     if @user.save
       login(@user)
       redirect_to user_path(@user)
+      UserMailer.welcome_email(@user).deliver_now
     else
 
-    flash[:error]= @user.errors.full_messages
-    redirect_to new_user_path
+      flash[:error]= @user.errors.full_messages
+      redirect_to new_user_path
     end
+
   end
 
   def show
