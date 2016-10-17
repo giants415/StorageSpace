@@ -23,6 +23,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    @spaces = Space.where(user_id: @user.id)
+    @transactions = Transaction.where(user_id: @user.id)
   end
 
   def edit
