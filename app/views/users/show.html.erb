@@ -1,13 +1,84 @@
-<h2><%= @user.name %></h2>
-<br>
-<h2><%= @user.email %></h2>
+<div class="container">
+  <div class="row">
+    <div class="col l5 offset-l1">
+      <br>
+      PHOTO
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <hr>
+      <% if @user == current_user %>
+        <div class="row">
+          <div class="col l6">
+            <%= button_to "Edit Profile", edit_user_path, method: "get", :class => "btn waves-effect waves-light" %>
+          </div>
+          <div class="col l6">
+            <%= button_to "Delete Profile", destroy_user_path, method: "delete", data: {confirm: "Are you sure you want to delete the profile for #{ @user.name }?"}, :class => "btn waves-effect waves-light" %>
+          </div>
+        </div>
+      <% elsif current_user && admin %>
+        <div class="row">
+          <div class="col l12">
+            <%= button_to 'Remove User', destroy_user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{ @user.name }?"}, :class => "btn waves-effect waves-light" %>
+          </div>
+        </div>
+      <% end %>
 
-<% if @user == current_user %>
-  <%= button_to "Edit Profile", edit_user_path, method: "get" %>
-  <br>
-  <%= button_to "Delete Profile", destroy_user_path, method: "delete", data: {confirm: "Are you sure you want to delete the profile for #{ @user.name }?"} %>
-<% end %>
-<br>
-<% if current_user && admin %>
-  <%= button_to 'Remove User', destroy_user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{ @user.name }?"} %>
-<% end %>
+    </div>
+    <div class="col l6">
+      <h2><%= @user.name %></h2>
+      <br>
+      <h4><strong>Contact info: </strong><%= @user.email %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col l5 offset-l1">
+      <h3>Your space listings:</h3>
+      <hr>
+    </div>
+    <div class="col l6">
+      <h3>Your space rentals:</h3>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col l5 offset-l1">
+      <% @spaces.each do |space| %>
+        <div>
+          <ul>
+            <li><strong>Space:  </strong><%= space.title %></li>
+            <li><strong>Address:  </strong><%= space.address %></li>
+            <li><strong>Price per month:  </strong><%= space.price %></li>
+            <li><strong>Square footage:  </strong><%= space.size %></li>
+            <li><strong>Availability:  </strong><%= space.available ? "Available" : "Not Available" %></li>
+          </ul>
+        </div>
+      <hr>
+      <% end %>
+    </div>
+    <div class="col l6">
+      <% @transactions.each do |transaction| %>
+        <div>
+          <ul>
+            <li><strong>Space:  </strong><%= Space.find_by_id(transaction.space_id).title %></li>
+            <li><strong>Owner:  </strong><%= User.find_by_id(transaction.user_id).name %></li>
+            <li><strong>Address:  </strong><%= Space.find_by_id(transaction.space_id).address %></li>
+            <li><strong>Price per month:  </strong><%= Space.find_by_id(transaction.space_id).price %></li>
+            <li><strong>Square footage:  </strong><%= Space.find_by_id(transaction.space_id).size %></li>
+            <li><strong>Start date:  </strong><%= transaction.start_date %></li>
+            <li><strong>End date:  </strong><%= transaction.end_date %></li>
+            <li><strong>Availability:  </strong><%= Space.find_by_id(transaction.space_id).available ? "Available" : "Not Available" %></li>
+          </ul>
+        </div>
+      <hr>
+      <% end %>
+    </div>
+  </div>
+
+</div>

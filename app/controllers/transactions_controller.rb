@@ -1,6 +1,7 @@
 class TransactionsController < ApplicationController
   def show
     @transaction = Transaction.find_by_id(params[:id])
+    @space = Space.find_by_id(@transaction.space_id)
   end
 
   def new
@@ -11,7 +12,8 @@ class TransactionsController < ApplicationController
   def create
     @space = Space.find_by_id(params[:space_id])
     @transaction = Transaction.create(transaction_params)
-
+    @space.available = false
+    @space.save
     redirect_to space_transaction_path(@space.id, @transaction.id)
   end
 

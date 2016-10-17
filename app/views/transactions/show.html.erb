@@ -1,7 +1,21 @@
-<h1>Information</h1>
-<li>Renter <%= @transaction.user_id %></li>
-<li>Space <%= @transaction.space_id %></li>
-<li><%= current_user %></li>
+<div class="container">
+  <div class="row">
+    <div class="col l8 offset-l2 s12">
 
-<h1>Agreement</h1>
-<li></li>
+      <h1>Rental Agreement</h1>
+      <h4><strong>Renter: </strong><%= User.find_by_id(@transaction.user_id).name %></h4>
+      <h4><strong>Owner: </strong><%= User.find_by_id(@space.user_id).name %></h4>
+
+      <h5><strong>Space: </strong><%= @space.title %></h5>
+      <ul>
+        <li><strong>Address:  </strong><%= @space.address %></li>
+        <li><strong>Price per month:  </strong><%= @space.price %></li>
+        <li><strong>Square footage:  </strong><%= @space.size %></li>
+        <li><strong>Start date:  </strong><%= @transaction.start_date %></li>
+        <li><strong>End date:  </strong><%= @transaction.end_date %></li>
+        <li><strong>Availability:  </strong><%= @space.available ? "Available" : "Not Available" %></li>
+      </ul>
+
+    </div>
+  </div>
+</div>
