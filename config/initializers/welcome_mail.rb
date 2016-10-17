@@ -3,7 +3,8 @@ ActionMailer::Base.smtp_settings = {
   :port         => 587,
   :domain       => "gmail.com",
   :user_name    => "storagespacesample@gmail.com",
-  :password     => ENV["secret_email_pw"],
+  :password     => Rails.application.secrets.secret_email_pw,
   :authentication => "plain",
   :enable_starttls_auto => true
 }
+ 
