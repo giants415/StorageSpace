@@ -23,8 +23,15 @@
   </div>
 </div>
     <div class="map_container">
-      <div class='sidebar pad2'>Listing</div>
-      <div id='map' class='map pad2'>Map</div>
+      <div class='sidebar pad2'>Spaces<hr>
+        <% @space.each do |space| %>
+        <%= link_to space.title, space_path(space) %><br>
+        Price: <%= space.price %><br>
+        Size: <%= space.size %>
+        <hr>
+        <% end %>
+        </div>
+      <div id='map' class='map pad2'></div>
     </div>
 
 <script>
