@@ -9,24 +9,27 @@
   </head>
 
   <body>
-    <nav>
-      <div class="nav-wrapper">
-        <p class="brand-logo"><%= link_to "StorageSpace", root_path %></p>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <nav>
+        <div class="nav-wrapper">
+          <p class="brand-logo"><%= link_to "StorageSpace", root_path %></p>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-          <% if current_user %>
-          <li><%= link_to "Profile", user_path(current_user) %></li>
-          <li><%= link_to "Log Out", logout_path %></li>
+            <% if current_user %>
+            <li><%= link_to "Profile", user_path(current_user) %></li>
+            <li><%= link_to "Log Out", logout_path %></li>
 
-          <% else %>
-          <li><%= link_to "Log In", login_path %></li>
-          <li><%= link_to "Sign Up", new_user_path %></li>
+            <% else %>
+            <li><%= link_to "Log In", login_path %></li>
+            <li><%= link_to "Sign Up", new_user_path %></li>
 
-          <% end %>
-        </ul>
-      </div>
-    </nav>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
 
-    <%= yield %>
+
+    <div class = "container">
+      <%= yield %>
+    </div>
   </body>
 </html>
