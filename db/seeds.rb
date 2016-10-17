@@ -18,9 +18,9 @@ user6 = User.create({name: "Admin Person", email: "admin@gmail.com", password: "
 user6.admin = true
 user6.save
 
-space1 = Space.create({user_id: 1, title: "Zach Test Listing", price: 20, address: "1000 Sample Rd, SF, CA 945394", size: 20, available: true, photo: "http://l18airpark.com/l18_airpark_images/10%20x%2012.jpg", description: "Cool and well list space in a closet"})
-space2 = Space.create({user_id: 2, title: "Alicia Test Listing", price: 25, address: "1001 Sample Rd, SF, CA 945394", size: 25, available: true, photo: "http://l18airpark.com/l18_airpark_images/10%20x%2012.jpg", description: "Cool and well list space in a closet"})
-space3 = Space.create({user_id: 3, title: "Andrew Test Listing", price: 30, address: "1002 Sample Rd, SF, CA 945394", size: 30, available: true, photo: "http://l18airpark.com/l18_airpark_images/10%20x%2012.jpg", description: "Cool and well list space in a closet"})
+space1 = Space.create({user_id: 1, title: "Zach Test Listing", price: 20, street_address: "1000 Sample Rd", city: "San Francisco", state: "CA", zip_code: "945394", size: 20, available: true, photo: "http://l18airpark.com/l18_airpark_images/10%20x%2012.jpg", description: "Cool and well lit space in a closet"})
+space2 = Space.create({user_id: 2, title: "Alicia Test Listing", price: 25, street_address: "1001 Sample Rd", city: "San Francisco", state: "CA", zip_code: "945394", size: 25, available: true, photo: "https://s3.amazonaws.com/static.carthrottle.com/workspace/uploads/posts/2016/01/bb342fad2f92b90fde5eafcd322ad3b0.jpg", description: "Great space in the back corner of a garage"})
+space3 = Space.create({user_id: 3, title: "Andrew Test Listing", price: 30, street_address: "1002 Sample Rd", city: "San Francisco", state: "CA", zip_code: "945394", size: 30, available: true, photo: "http://l18airpark.com/l18_airpark_images/10%20x%2012.jpg", description: "Great space in my storage unit on Geary"})
 
 p "Seeds have been updated"
 
