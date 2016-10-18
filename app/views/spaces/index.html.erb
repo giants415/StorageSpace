@@ -56,8 +56,6 @@
       <div id='map' class='map pad2'></div>
     </div>
 
-
-
 <script>
   mapboxgl.accessToken = 'pk.eyJ1Ijoiempmb25nIiwiYSI6ImNpdWQycDFldjAwN2gydG1wYjRuNHAyOTIifQ.U97c40oCoSUNVwei9HqTgg';
   var map = new mapboxgl.Map({
@@ -66,10 +64,6 @@
     center: [-122.444910, 37.763688],
     zoom: 12
   });
-
-
-
-
 
   map.on('load', function () {
     var geojson = [];
@@ -86,16 +80,11 @@
             },
             "properties": {
                 "title": name,
-                "icon": "star",
-                'marker-size': 'large',
+                "icon": "star"
             }
         };
       geojson.push(point);
-      <% end %>
-
-
-
-
+    <% end %>
 
     map.addSource("points", {
         "type": "geojson",
@@ -113,11 +102,10 @@
             "icon-image": "{icon}-15",
             "text-field": "{title}",
             "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-size": 15,
             "text-offset": [0, 0.6],
             "text-anchor": "top"
         }
     });
   });
-
-
 </script>
