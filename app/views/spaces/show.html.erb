@@ -1,12 +1,6 @@
 <div class = "container">
   <h1 class = "center-align"> <%= @space.title %> </h1>
-  <div class="carousel carousel-slider single_listing">
-    <a class="carousel-item" href="#one!"><img src="<%= @space.photo %>"></a>
-    <a class="carousel-item" href="#two!"><img src="<%= @space.photo %>"></a>
-    <a class="carousel-item" href="#three!"><img src="<%= @space.photo %>"></a>
-    <a class="carousel-item" href="#four!"><img src="<%= @space.photo %>"></a>
-    <%= image_tag @space.photo1.url(:medium) %>
-    <%= image_tag @space.photo2.url(:medium) %>
+    <%= image_tag @space.photo1.url(:medium), class: "show_picture" %>
   </div>
   <div class = "row">
     <p>Price: $<%= @space.price %></p>
@@ -16,8 +10,6 @@
         <p><%= @space.city %></p>
         <p><%= @space.state %></p>
         <p><%= @space.zip_code %></p>
-        <p><%= @space.longitude %></p>
-        <p><%= @space.latitude %></p>
       </div>
     </div>
     <div class = "row">

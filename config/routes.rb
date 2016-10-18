@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'errors/not_found'
 
-  root to: "spaces#index"
+  root to: "site#show"
 
   get "/login", to: "sessions#new"
   post "/sessions", to: "sessions#create"
@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   end
 
   resources :charges
+  resources :site
 
 end
