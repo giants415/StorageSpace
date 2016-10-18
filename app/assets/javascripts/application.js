@@ -25,4 +25,23 @@ $(document).ready(function(){
     $('.slider').slider('pause');
   });
 
+  $('#star1').click(function (){
+    $('#star1').attr('src', "http://pngimg.com/upload/star_PNG1592.png");
+  });
+
+  $('#star2').click(function(){
+    $('#star2').attr('src', "http://pngimg.com/upload/star_PNG1592.png");
+  });
+
+  $('#star3').click(function(){
+    $('#star3').attr('src', "http://pngimg.com/upload/star_PNG1592.png");
+  });
+
+  $('#star4').click(function(){
+    $('#star4').attr('src', "http://pngimg.com/upload/star_PNG1592.png");
+  });
+
+  $('#star5').click(function(){
+    $('#star5').attr('src', "http://pngimg.com/upload/star_PNG1592.png");
+  });
 });
