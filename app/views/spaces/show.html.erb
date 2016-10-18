@@ -21,6 +21,20 @@
       <p>About This Space</p>
       <hr>
       <p><%= @space.description %></p>
+
+      <div class="row">
+        <div class="col l2">
+          <table>
+            <tr>
+              <td><%= image_tag 'empty_star.png', :class => "star_rating", :id => "star1" %></td>
+              <td><%= image_tag 'empty_star.png', :class => "star_rating", :id => "star2" %></td>
+              <td><%= image_tag 'empty_star.png', :class => "star_rating", :id => "star3" %></td>
+              <td><%= image_tag 'empty_star.png', :class => "star_rating", :id => "star4" %></td>
+              <td><%= image_tag 'empty_star.png', :class => "star_rating", :id => "star5" %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
     <% if current_user %>
   <%= button_to "Rent this space", new_space_transaction_path(@space), method: "get", class: "waves-effect waves-light btn" %>
@@ -35,5 +49,3 @@
 <% end %>
   </div>
 </div>
-
-
