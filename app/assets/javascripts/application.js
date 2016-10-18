@@ -18,4 +18,11 @@
 
 $(document).ready(function(){
   $('.carousel.carousel-slider').carousel({full_width: true});
+
+  $('.slider').slider({full_width: true});
+
+  $('.card').on('click', function(){
+    $('.slider').slider('pause');
+  });
+
 });

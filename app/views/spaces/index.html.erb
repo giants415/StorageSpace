@@ -7,54 +7,67 @@
   </div> -->
 
   <div class="row">
-    <div class="card medium">
-      <div class="card-image">
-        <img src="http://l18airpark.com/l18_airpark_images/10%20x%2012.jpg">
+
+    <!-- <div class="col l6">
+      <% @space.each do |space| %>
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="<%=space.photo%> ">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"> <%= space.title %> | <%= space.street_address %> </span>
+            <p>Price: $<%= space.price %></p>
+            <p>Rental Term:</p>
+            <p>Square Feet: <%= space.size %></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title"><%= space.title %><i class="right">X</i></span>
+            <p> <%=space.street_address%> | <%=space.city%> | <%=space.zip_code%> </p>
+            <p><%= space.description %></p>
+          </div>
+        </div>
+      <%end%>
+    </div> -->
+    <br>
+    <div class="col l6">
+      <div class="slider">
+         <ul class="slides card">
+           <% @space.each do |space| %>
+            <li>
+               <div class="card">
+                 <div class="card-image waves-effect waves-block waves-light">
+                   <img class="activator photoArea" src="<%=space.photo%> ">
+                 </div>
+                 <div class="card-content">
+                   <span class="card-title activator grey-text text-darken-4"> <%= space.title %> | <%= space.street_address %> </span>
+                   <p>Price: $<%= space.price %></p>
+                   <p>Rental Term:</p>
+                   <p>Square Feet: <%= space.size %></p>
+                 </div>
+                 <div class="card-reveal">
+                   <div class="close-card"><span class="card-title"><%= space.title %><i class="right">X</i></span></div>
+                   <p> <%=space.street_address%> | <%=space.city%> | <%=space.zip_code%> </p>
+                   <p><%= space.description %></p>
+                 </div>
+               </div>
+             </li>
+           <%end%>
+         </ul>
+       </div>
+     </div>
+
+    <div class="col l6">
+      <div class="map_container">
+        <div id='map' class='map pad2'></div>
       </div>
-      <div class="card-content">
-        <% @space.each do |space| %>
-        <span class="card-title"> <%= link_to space.title, space_path(space) %> </span>
-        <%= space.price %>
-        <%= space.size %>
-      </div>
-      <div class="card-reveal">
-        <%= space.available %>
-        <%= space.description %>
-        <%end%>
-      </div>
-      <%= button_to "List Your Space", new_space_path, method: "get", class: "btn waves-effect waves-light" %>
     </div>
-    <% @space.each do |space| %>
-      <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="<%=space.photo%> ">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4"> <%= space.title %> | <%= space.street_address %> </span>
-          <p>Price: $<%= space.price %></p>
-          <p>Rental Term:</p>
-          <p>Square Feet: <%= space.size %></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title"><%= space.title %><i class="right">X</i></span>
-          <p> <%=space.street_address%> | <%=space.city%> | <%=space.zip_code%> </p>
-          <p><%= space.description %></p>
-        </div>
-      </div>
-    <%end%>
+
   </div>
+
 </div>
-    <div class="map_container">
-      <div class='sidebar pad2'>Spaces<hr>
-        <% @space.each do |space| %>
-        <%= link_to space.title, space_path(space) %><br>
-        Price: <%= space.price %><br>
-        Size: <%= space.size %>
-        <hr>
-        <% end %>
-        </div>
-      <div id='map' class='map pad2'></div>
-    </div>
+
+    <%= button_to "List Your Space", new_space_path, method: "get", class: "btn waves-effect waves-light" %>
+
 
 <script>
   mapboxgl.accessToken = 'pk.eyJ1Ijoiempmb25nIiwiYSI6ImNpdWQycDFldjAwN2gydG1wYjRuNHAyOTIifQ.U97c40oCoSUNVwei9HqTgg';
