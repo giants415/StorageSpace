@@ -5,6 +5,8 @@
     <a class="carousel-item" href="#two!"><img src="<%= @space.photo %>"></a>
     <a class="carousel-item" href="#three!"><img src="<%= @space.photo %>"></a>
     <a class="carousel-item" href="#four!"><img src="<%= @space.photo %>"></a>
+    <%= image_tag @space.photo1.url(:medium) %>
+    <%= image_tag @space.photo2.url(:medium) %>
   </div>
   <div class = "row">
     <p>Price: $<%= @space.price %></p>

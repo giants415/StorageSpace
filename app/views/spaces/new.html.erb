@@ -38,7 +38,13 @@
       </div>
       <div class = "input-field">
         <%= f.text_field :photo %>
-        <label>Upload a photo</label>
+        <label>Upload photo 1</label><br><br><br>
+        <%= f.file_field :photo1 %>
+      </div>
+      <div class = "input-field">
+        <%= f.text_field :photo %>
+        <label>Upload photo 2</label><br><br><br>
+        <%= f.file_field :photo2 %>
       </div>
       <div class = "input-field">
         <%= f.number_field :user_id %>
