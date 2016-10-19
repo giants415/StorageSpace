@@ -16,7 +16,7 @@
   <body>
     <header>
       <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper" id="navBar">
           <p class="brand-logo"><%= link_to "StorageSpace", root_path %></p>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
 
@@ -44,16 +44,11 @@
     <footer class="page-footer">
       <div class="container">
         <div class="row">
-          <div class="col l10 s12">
-            <h5 class="white-text">Footer Content</h5>
-            <p class="grey-text text-lighten-4">[content]</p>
+          <div class="col l6 m6 s12 center-align">
+            <h5 class="white-text"><%= link_to "See all spaces", spaces_path, {:style=>'color:#FFFFFF;', :class => "css_class"} %></h5>
           </div>
-          <div class="col l2 s12">
-            <h5 class="white-text">Links</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-            </ul>
+          <div class="col l6 m6 s12 center-align">
+            <h5 class="white-text"><%= link_to "About us", site_index_path, {:style=>'color:#FFFFFF;', :class => "css_class"} %></h5>
           </div>
         </div>
       </div>

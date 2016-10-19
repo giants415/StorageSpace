@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
   def index
-    @space = Space.all
+    @spaces = Space.where(available: true)
   end
 
   def new

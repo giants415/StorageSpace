@@ -3,7 +3,7 @@ class SiteController < ApplicationController
   end
 
   def show
-    @space = Space.all
+    @spaces = Space.where(available: true)
   end
 
 end

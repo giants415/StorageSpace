@@ -3,7 +3,7 @@
     <h3 class = "center-align notice"><%= flash[:notice] %></h3>
   <%end%>
   <div class="row">
-    <div class="col l5 offset-l1">
+    <div class="col l6">
       <br>
       <%= image_tag @user.avatar.url(:thumb) %>
       <hr>
@@ -32,7 +32,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col l5 offset-l1">
+    <div class="col l6">
       <h3>Your spaces:</h3>
       <hr>
     </div>
@@ -42,16 +42,22 @@
     </div>
   </div>
   <div class="row">
-    <div class="col l5 offset-l1">
+    <div class="col l6">
       <% @spaces.each do |space| %>
-        <div>
-          <ul>
-            <li><strong>Space:  </strong><%= space.title %></li>
-            <li><strong>Address:  </strong><%= space.street_address %></li>
-            <li><strong>Price per month:  </strong><%= space.price %></li>
-            <li><strong>Square footage:  </strong><%= space.size %></li>
-            <li><strong>Availability:  </strong><%= space.available ? "Available" : "Not Available" %></li>
-          </ul>
+        <div class="row">
+          <div class="col l6">
+            <ul>
+              <li><strong>Space:  </strong><%= space.title %></li>
+              <li><strong>Address:  </strong><%= space.street_address %></li>
+              <li><strong>Price per month:  </strong><%= space.price %></li>
+              <li><strong>Square footage:  </strong><%= space.size %></li>
+              <li><strong>Availability:  </strong><%= space.available ? "Available" : "Not Available" %></li>
+            </ul>
+          </div>
+          <div class="col l6">
+            <%= button_to "Edit Listing", edit_space_path(space.id), method: "get", :class => "btn waves-effect waves-light" %>
+            <br>
+          </div>
         </div>
       <hr>
       <% end %>
