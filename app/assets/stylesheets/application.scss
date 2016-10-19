@@ -49,15 +49,13 @@
 
 .map {
   display: inline-block;
-  border-left: 1px solid #fff;
-  position: absolute;
+  position: relative;
   width: 66.6666%;
-  height: 475px;
-  width: 346.5px;
+  height: 100%;
+  width: 100%;
 }
 
 .pad2 {
-  padding: 20px;
   box-sizing: border-box;
 }
 

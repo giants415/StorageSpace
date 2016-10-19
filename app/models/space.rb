@@ -2,6 +2,10 @@ class Space < ApplicationRecord
   has_many :transactions
   belongs_to :user
 
+  # def address(:street_address, :city, :state, :zip_code)
+  #   @address = :street_address.to_s + :city.to_s + :state.to_s + :zip_code.to_s
+  # end
+
   geocoded_by :street_address
   after_validation :geocode
 

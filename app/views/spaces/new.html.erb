@@ -10,23 +10,9 @@
         <%= f.number_field :price, in: 1.00..3000.00 %>
         <label>Price</label>
       </div>
-      <div class = "row">
-        <div class = "input-field col s3">
-          <input id="address" type="text" class="validate">
-          <label for= "address">Street Address</label>
-        </div>
-        <div class = "input-field col s3">
-          <input id="city" type="text" class="validate">
-          <label for= "city">City</label>
-        </div>
-        <div class = "input-field col s3">
-          <input id="state" type="text" class="validate">
-          <label for= "state">State</label>
-        </div>
-        <div class = "input-field col s3">
-          <input id="zipCode" type="text" class="validate">
-          <label for= "zipCode">Zip Code</label>
-        </div>
+      <div class = "input-field">
+        <%= f.text_field :street_address, placeholder: "ex. 225 Bush St, San Francisco, CA, 94104"  %>
+        <label for= "address">Full Street Address</label>
       </div>
       <div class = "input-field">
         <%= f.number_field :size, in: 10.0..200 %>

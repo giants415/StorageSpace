@@ -74,15 +74,15 @@
     style: 'mapbox://styles/zjfong/ciud2sovs00362inwfcp45fbp',
     center: [-122.444910, 37.763688],
     zoom: 12
-  });
+  })
 
   map.on('load', function () {
     var geojson = [];
     <% @space.each do |space| %>
-      var long = <%= space.longitude %>;
-      var lat = <%= space.latitude %>;
-      var name = "<%= space.title %>";
-      var point =
+      long = <%= space.longitude %>
+      lat = <%= space.latitude %>
+      name = "<%= space.title %>"
+      point =
         {
             "type": "Feature",
             "geometry": {
@@ -94,7 +94,7 @@
                 "icon": "star"
             }
         };
-      geojson.push(point);
+      geojson.push(point)
     <% end %>
 
     map.addSource("points", {
@@ -103,7 +103,7 @@
             "type": "FeatureCollection",
             "features": geojson
         }
-    });
+    })
 
     map.addLayer({
         "id": "points",
@@ -117,8 +117,7 @@
             "text-offset": [0, 0.6],
             "text-anchor": "top"
         }
-    });
-  });
-  map.scrollZoom.disable();
-  map.addControl(new mapboxgl.NavigationControl());
+    })
+  })
+  map.scrollZoom.disable()
 </script>
