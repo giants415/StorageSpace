@@ -77,6 +77,14 @@
 
 
 <script>
+  $(document).ready(function(){
+    $('.slider').slider({full_width: true});
+
+    $('.card').on('click', function(){
+      $('.slider').slider('pause');
+    });
+  });
+
   mapboxgl.accessToken = 'pk.eyJ1Ijoiempmb25nIiwiYSI6ImNpdWQycDFldjAwN2gydG1wYjRuNHAyOTIifQ.U97c40oCoSUNVwei9HqTgg';
   var map = new mapboxgl.Map({
     container: 'map',
