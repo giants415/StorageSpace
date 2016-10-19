@@ -13,11 +13,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         login(@user)
+        redirect_to @user
         WelcomeMailer.welcome_email(@user).deliver_now
         format.html { redirect_to(@user, notice: 'User was successfully created.') }
         format.json { render json: @user, status: :created, location: @user }
       else
-
         flash[:error]= @user.errors.full_messages
         redirect_to new_user_path
       end
