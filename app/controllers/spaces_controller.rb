@@ -4,13 +4,17 @@ class SpacesController < ApplicationController
   end
 
   def new
-    @space = Space.new
+    if current_user
+      @space = Space.new
+    else
+      redirect_to login_path
+    end
   end
 
   def create
-    @space = Space.create(space_params)
-    flash[:notice] = "Your listing was successfully created"
-    redirect_to spaces_path
+      @space = Space.create(space_params)
+      flash[:notice] = "Your listing was successfully created"
+      redirect_to spaces_path
   end
 
   def edit
