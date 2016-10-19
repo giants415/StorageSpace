@@ -1,39 +1,56 @@
 class ChargesController < ApplicationController
+  def index
+  end
+
   def new
     @transaction = Transaction.find_by_id(params[:transaction_id])
     @space = Space.find_by_id(@transaction.space_id)
-    logger.debug "Value of this transaction is #{@transaction.space_id}"
+
   end
 
 def create
-  @transaction = Transaction.find_by_id(params[:transaction_id])
-  @space = Space.find_by_id(@transaction.space_id)
-  logger.debug "Value of this transaction is #{@transaction}"
 
-  # logger.debug "Value of space is #{@transaction.space_id}"
-  # Amount in cents
-  @amount = @space.price
+    @amount = params[:amount]
 
-  customer = Stripe::Customer.create(
-    :email => params[:stripeEmail],
-    :source  => params[:stripeToken]
-  )
+    @amount = @amount.gsub('$', '').gsub(',', '')
 
-  charge = Stripe::Charge.create(
-    :customer    => customer.id,
-    :amount      => @amount,
-    :description => 'StorageSpace Stripe customer',
-    :currency    => 'usd'
-  )
+    begin
+      @amount = Float(@amount).round(2)
+    rescue
+      flash[:error] = 'Charge not completed. Please enter a valid amount in USD ($).'
+      redirect_to new_charge_path
+      return
+    end
 
-rescue Stripe::CardError => e
-  flash[:error] = e.message
-  redirect_to new_charge_path
-end
+    @amount = (@amount * 100).to_i # Must be an integer!
+
+    if @amount < 500
+      flash[:error] = 'Charge not completed. Donation amount must be at least $5.'
+      redirect_to new_charge_path
+      return
+    end
+
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+    )
+
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => @amount.to_i,
+      :description => 'StorageSpace Stripe customer',
+      :currency    => 'usd'
+    )
+
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_charge_path
+  end
+
 end
 
 private
 
 def charge_params
-  params.require(:transaction).permit(:space_id)
+  @transaction_id = params.require(:transaction).permit(:space_id)
 end
