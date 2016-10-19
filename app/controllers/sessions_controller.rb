@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
     user_params = params.require(:user).permit(:email, :password)
     @user = User.confirm(user_params)
     if @user
+      if @user.AuthStatus
       login(@user)
       flash[:notice] = "Successfully logged in as #{@user.name}!"
       redirect_to @user
