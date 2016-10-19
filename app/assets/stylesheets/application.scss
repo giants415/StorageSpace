@@ -28,6 +28,10 @@
     flex: 1 0 auto;
   }
 
+.notice {
+  color: red;
+}
+
   .brand-logo {
     margin-top: 5px;
     margin-left: 5px;
@@ -58,9 +62,3 @@
 .pad2 {
   box-sizing: border-box;
 }
-
-.show_picture {
-  max-width: 300px;
-  margin-left: 280px;
-}
-

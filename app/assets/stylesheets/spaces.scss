@@ -1,6 +1,20 @@
 // Place all the styles related to the spaces controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Patua+One');
+
+$listing: 'Patuna One', serif;
+$info: 'Meriweather', serif;
+
+.title{
+  font-family: $listing;
+}
+
+.info_block{
+  font-family: $info;
+  font-size: large;
+}
+
 .single_listing{
   margin-top: 1em;
 }
@@ -8,7 +22,11 @@
 .photoArea {
   max-width: 40em;
   max-height: 16em;
-  // object-fit: contain;
+}
+
+.content_block {
+  margin-top: 2em;
+  padding: .5em 1em 1em 1em;
 }
 
 .card {
@@ -17,4 +35,9 @@
 
 .star_rating {
   height: 3em;
+}
+
+
+.show_picture {
+  max-width: 300px;
 }

@@ -2,6 +2,9 @@
 <div class="divider"></div>
 
 <div class="container">
+  <% if flash[:notice] %>
+    <h3 class = "center-align notice"><%= flash[:notice] %></h3>
+  <%end%>
 
   <div class="row">
     <div class="col l12 m12 s12">
