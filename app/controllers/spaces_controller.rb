@@ -1,15 +1,20 @@
 class SpacesController < ApplicationController
   def index
-    @space = Space.all
+    @spaces = Space.where(available: true)
   end
 
   def new
-    @space = Space.new
+    if current_user
+      @space = Space.new
+    else
+      redirect_to login_path
+    end
   end
 
   def create
-    @space = Space.create(space_params)
-    redirect_to spaces_path
+      @space = Space.create(space_params)
+      flash[:notice] = "Your listing was successfully created"
+      redirect_to user_path(@space.user_id)
   end
 
   def edit
@@ -38,7 +43,7 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    params.require(:space).permit(:title, :price, :address, :size, :available, :photo, :description, :user_id)
+    params.require(:space).permit(:title, :price, :street_address, :size, :available, :photo1, :description, :user_id)
   end
 
   def space_id

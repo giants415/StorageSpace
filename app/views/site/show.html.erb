@@ -1,0 +1,140 @@
+<div class="full-width">
+  <img src="http://www.247householdstoragebangalore.com/images/bangalore.jpg" class="responsive-img"/>
+  <div class="full-width-content">
+    <h1 class="center-align"> Call to Action </h1>
+  </div>
+</div>
+<div class="container">
+
+  <div class="row">
+
+    <br>
+    <div class="col l6 m12 s12">
+      <div class="row">
+        <div class="col l12 m12 s12">
+          <h3 class="center-align">All Available Listings</h3>
+        </div>
+      </div>
+      <div class="slider">
+         <ul class="slides card">
+           <% @spaces.each do |space| %>
+            <li>
+               <div class="card">
+                 <div class="card-image waves-effect waves-block waves-light">
+                   <img class="activator photoArea" src="<%=space.photo%> ">
+                 </div>
+                 <div class="card-content">
+                   <p class="card-title activator grey-text text-darken-4"> <%= space.title %><i class="material-icons md-18 right">more_vert</i></p>
+                   <p><%= space.street_address %> </p>
+                   <p>Price: $<%= space.price %></p>
+                   <p>Square Feet: <%= space.size %></p>
+                 </div>
+                 <div class="card-reveal">
+                   <div class="close-card"><span class="card-title"><%= space.title %><i class="material-icons md-18 right">close</i></span></div>
+                   <p> <%=space.street_address%></p>
+                   <p>Price: $<%= space.price %></p>
+                   <p>Square Feet: <%= space.size %></p>
+                   <p><%= space.description %></p>
+                   <br>
+                   <% if current_user %>
+                     <%= button_to "Rent this space", new_space_transaction_path(space.id), method: "get", class: "waves-effect waves-light btn" %>
+                   <% else %>
+                     <h5>
+                      <%= link_to "Log In", login_path %>
+                      or
+                      <%= link_to "Sign Up", new_user_path %>
+                      to rent this space
+                    </h5>
+                   <% end %>
+                 </div>
+               </div>
+             </li>
+           <%end%>
+         </ul>
+       </div>
+     </div>
+
+    <div class="col l6 m12 s12">
+      <div class="map_container">
+        <div id='map' class='map pad2'></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col l3 m12 s12 center-align">
+        <%= button_to "See All Spaces", spaces_path, method: "get", class: "btn waves-effect waves-light" %>
+      </div>
+      <br>
+      <div class="col l3 m12 s12 center-align">
+        <%= button_to "List Your Space", new_space_path, method: "get", class: "btn waves-effect waves-light" %>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+  $(document).ready(function(){
+    $('.slider').slider({full_width: true});
+
+    $('.card').on('click', function(){
+      $('.slider').slider('pause');
+    });
+  });
+
+  mapboxgl.accessToken = 'pk.eyJ1Ijoiempmb25nIiwiYSI6ImNpdWQycDFldjAwN2gydG1wYjRuNHAyOTIifQ.U97c40oCoSUNVwei9HqTgg';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/zjfong/ciud2sovs00362inwfcp45fbp',
+    center: [-122.444910, 37.763688],
+    zoom: 12
+  })
+
+  map.on('load', function () {
+    var geojson = [];
+    <% @spaces.each do |space| %>
+      long = <%= space.longitude %>
+      lat = <%= space.latitude %>
+      name = "<%= space.title %>"
+      point =
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [long, lat]
+            },
+            "properties": {
+                "title": name,
+                "icon": "star"
+            }
+        };
+      geojson.push(point)
+    <% end %>
+
+    map.addSource("points", {
+        "type": "geojson",
+        "data": {
+            "type": "FeatureCollection",
+            "features": geojson
+        }
+    })
+
+    map.addLayer({
+        "id": "points",
+        "type": "symbol",
+        "source": "points",
+        "layout": {
+            "icon-image": "{icon}-15",
+            "text-field": "{title}",
+            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-size": 15,
+            "text-offset": [0, 0.6],
+            "text-anchor": "top"
+        }
+    })
+  })
+  map.scrollZoom.disable()
+</script>

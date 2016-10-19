@@ -2,31 +2,64 @@
 <html>
   <head>
     <title>StorageSpace</title>
-    <%= csrf_meta_tags %>
 
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.21.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.21.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <nav>
-      <div class="nav-wrapper">
-        <p class="brand-logo"><%= link_to "StorageSpace", root_path %></p>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <header>
+      <nav>
+        <div class="nav-wrapper" id="navBar">
+          <p class="brand-logo"><%= link_to "StorageSpace", root_path %></p>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-          <% if current_user %>
-          <li><%= link_to "Profile", user_path(current_user) %></li>
-          <li><%= link_to "Log Out", logout_path %></li>
+            <% if current_user %>
+            <li><%= link_to "List Your Space", new_space_path %></li>
+            <li><%= link_to "Profile", user_path(current_user) %></li>
+            <li><%= link_to "Log Out", logout_path %></li>
 
-          <% else %>
-          <li><%= link_to "Log In", login_path %></li>
-          <li><%= link_to "Sign Up", new_user_path %></li>
+            <% else %>
+            <li><%= link_to "Log In", login_path %></li>
+            <li><%= link_to "Sign Up", new_user_path %></li>
 
-          <% end %>
-        </ul>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- <div class = "container"> -->
+        <%= yield %>
+ <!--      </div> -->
+    </main>
+
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 m6 s12 center-align">
+            <h5 class="white-text"><%= link_to "See all spaces", spaces_path, {:style=>'color:#FFFFFF;', :class => "css_class"} %></h5>
+          </div>
+          <div class="col l6 m6 s12 center-align">
+            <h5 class="white-text"><%= link_to "About us", site_index_path, {:style=>'color:#FFFFFF;', :class => "css_class"} %></h5>
+          </div>
+        </div>
       </div>
-    </nav>
-
-    <%= yield %>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2016 StorageSpace
+        <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

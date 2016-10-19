@@ -1,17 +1,29 @@
-<h3>Edit Profile</h3>
+<div class= "container">
+  <div class= "row">
+    <div class="col l4 offset-l4 s12">
 
-<% if @user.id == current_user.id %>
-  <%= form_for @user do |f| %>
-    <div>
-      <span class="label label-default"></span><%= f.text_field :name, placeholder: "Full Name", size: "35x10" %>
+      <h3>Edit Profile</h3>
+
+      <% if @user.id == current_user.id %>
+        <%= form_for @user do |f| %>
+          <div>
+            <span class="label label-default"></span><%= f.text_field :name, placeholder: "Full Name", size: "35x10" %>
+          </div>
+          <br>
+          <div>
+            <span class="label label-default"></span><%= f.text_field :email, placeholder: "Email", size: "35x10" %>
+          </div>
+          <br>
+           <%= f.file_field :avatar %>
+          <br>
+          <hr>
+          <br>
+          <div class="userSubmitButton"><%= f.submit "Submit", class: "btn waves-effect waves-light" %></div>
+        <% end %>
+      <% else %>
+        Something messed up :(
+      <% end %>
+
     </div>
-    <br>
-    <div>
-      <span class="label label-default"></span><%= f.text_field :email, placeholder: "Email", size: "35x10" %>
-    </div>
-    <br>
-    <div class="userSubmitButton"><%= f.submit "Submit" %></div>
-  <% end %>
-<% else %>
-  Something messed up :(
-<% end %>
+  </div>
+</div>

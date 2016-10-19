@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'errors/not_found'
 
-  root to: "users#index"
+  root to: "site#show"
 
   get "/login", to: "sessions#new"
   post "/sessions", to: "sessions#create"
@@ -15,8 +15,23 @@ Rails.application.routes.draw do
   patch "/users/:id", to: "users#update"
   delete "/users/:id", to: "users#destroy", as: "destroy_user"
 
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
+
+
   resources :spaces do
     resources :transactions
   end
+
+  resources :transactions do
+    resources :charges
+  end
+
+  resources :charges
+  resources :site
+  patch "/spaces/:id", to: "spaces#update", as: "patch_space"
 
 end

@@ -1,7 +1,27 @@
-<h1> <%= @space.title %> </h1>
-<%= @space.price %>
-<%= @space.address %>
-<%= @space.size %>
-<%= @space.available %>
-<%= @space.description %>
-<%= @space.photo %>
+<div class = "container">
+  <div class = "row z-depth-2 content_block">
+    <h1 class = "title center-align"> <%= @space.title %> </h1>
+    <div class = "info_block left-align col l4">
+      <p>Price: $<%= @space.price %></p>
+      <p>Address: <%= @space.street_address %></p>
+      <p>Space Available: <%= @space.size %> sq. ft.</p>
+      <div class = "divider"></div>
+      <p><%= @space.description %></p>
+    </div>
+    <div class = "col l6 right-align">
+      <%= image_tag @space.photo1.url(:medium), class: "show_picture" %>
+    </div>
+  </div>
+  <div class = "row center-align">
+    <% if current_user %>
+      <%= button_to "Rent this space", new_space_transaction_path(@space), method: "get", class: "waves-effect waves-light btn" %>
+    <% else %>
+      <h5>
+       <%= link_to "Log In", login_path %>
+       or
+       <%= link_to "Sign Up", new_user_path %>
+       to rent this space
+     </h5>
+    <% end %>
+  </div>
+</div>

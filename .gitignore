@@ -13,5 +13,12 @@
 !/log/.keep
 !/tmp/.keep
 
+.DS_Store
+
+**/secrets.yml
+
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore application configuration
+/config/application.yml

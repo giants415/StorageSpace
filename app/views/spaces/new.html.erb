@@ -1,6 +1,5 @@
-<h1> Create a listing </h1>
-
 <div class= "container">
+  <h1 class = "center-align"> Create a listing </h1>
   <div class= "row">
     <%= form_for(@space, as: :space, method: :post) do |f| %>
       <div class = "input-field">
@@ -12,8 +11,8 @@
         <label>Price</label>
       </div>
       <div class = "input-field">
-        <%= f.text_field :address, placeholder: "eg. 123 Sample Lane, Sample City, Sample State, 55555" %>
-        <label>Address</label>
+        <%= f.text_field :street_address, placeholder: "ex. 225 Bush St, San Francisco, CA, 94104", type: "text"  %>
+        <label for= "address">Full Street Address</label>
       </div>
       <div class = "input-field">
         <%= f.number_field :size, in: 10.0..200 %>
@@ -24,12 +23,11 @@
         <label>Describe the Space</label>
       </div>
       <div class = "input-field">
-        <%= f.text_field :photo %>
-        <label>Upload a photo</label>
-      </div>
+        <label>Upload a photo</label><br><br>
+        <%= f.file_field :photo1 %>
+      </div><br>
       <div class = "input-field">
-        <%= f.number_field :user_id %>
-        <label>User ID</label>
+        <%= f.hidden_field :user_id, value: current_user.id %>
       </div>
       <%= f.submit "Create A Listing", :class => "btn waves-effect waves-light" %>
     <% end %>
