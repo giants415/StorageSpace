@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     resources :transactions
   end
 
+  resources :transactions do
+    resources :charges
+  end
+
   resources :charges
   resources :site
 
