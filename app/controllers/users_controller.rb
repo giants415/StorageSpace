@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
       if @user.save
-        login(@user)
-        redirect_to @user
+        flash[:success]= "Please verify your email."
+        redirect_to login_path
         WelcomeMailer.welcome_email(@user).deliver_now
       else
         flash[:error]= @user.errors.full_messages
@@ -49,9 +49,24 @@ class UsersController < ApplicationController
     redirect_to logout_path
   end
 
+  def confirm_email
+    user = User.find_by_AuthCode(params[:id])
+    if user
+      user.email_activate
+      # flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
+      # Please sign in to continue."
+      login(user)
+      redirect_to user
+    else
+      # flash[:error] = "Sorry. User does not exist"
+      redirect_to root_url
+    end
+  end
+
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :avatar)
+    user_info = params.require(:user).permit(:name, :email, :password, :avatar)
+    user_params = user_info.merge({AuthCode: SecureRandom.hex(10)})
   end
 
 end
