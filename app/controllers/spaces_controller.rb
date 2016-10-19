@@ -9,6 +9,7 @@ class SpacesController < ApplicationController
 
   def create
     @space = Space.create(space_params)
+    flash[:notice] = "Your listing was successfully created"
     redirect_to spaces_path
   end
 
@@ -38,7 +39,7 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    params.require(:space).permit(:title, :price, :address, :size, :available, :photo1, :photo2, :description, :user_id)
+    params.require(:space).permit(:title, :price, :size, :available, :photo1, :photo2, :description, :user_id)
   end
 
   def space_id

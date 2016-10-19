@@ -2,7 +2,7 @@ class Space < ApplicationRecord
   has_many :transactions
   belongs_to :user
 
-  geocoded_by :street_address
+  geocoded_by :street_address && :city
   after_validation :geocode
 
   has_attached_file :photo1, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "no_image.png"
