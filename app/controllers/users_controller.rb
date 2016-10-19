@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
       if @user.save
-        login(@user)
-        redirect_to @user
+        flash[:success]= "Please verify your email."
+        redirect_to login_path
         WelcomeMailer.welcome_email(@user).deliver_now
       else
         flash[:error]= @user.errors.full_messages
@@ -55,7 +55,8 @@ class UsersController < ApplicationController
       user.email_activate
       # flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
       # Please sign in to continue."
-      redirect_to login_path
+      login(user)
+      redirect_to user
     else
       # flash[:error] = "Sorry. User does not exist"
       redirect_to root_url

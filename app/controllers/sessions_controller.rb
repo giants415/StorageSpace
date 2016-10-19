@@ -8,13 +8,12 @@ class SessionsController < ApplicationController
   def create
     user_params = params.require(:user).permit(:email, :password)
     @user = User.confirm(user_params)
-    if @user
-      if @user.AuthStatus
+    if @user.AuthStatus
       login(@user)
       flash[:notice] = "Successfully logged in as #{@user.name}!"
       redirect_to @user
     else
-      flash[:error] = "There was an error logging in, please try again."
+      flash[:error] = "Error logging in."
       redirect_to login_path
     end
   end
