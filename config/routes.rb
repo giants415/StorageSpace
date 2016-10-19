@@ -21,5 +21,6 @@ Rails.application.routes.draw do
 
   resources :charges
   resources :site
+  patch "/spaces/:id", to: "spaces#update", as: "patch_space"
 
 end
