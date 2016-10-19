@@ -7,12 +7,6 @@
 
     <br>
     <div class="col l6 m12 s12">
-      <div class="row">
-        <div class="col l12 m12 s12">
-          <h3 class="center-align">Featured Spaces</h3>
-        </div>
-      </div>
-
       <div class="slider">
          <ul class="slides card">
            <% @space.each do |space| %>
@@ -31,6 +25,19 @@
                    <div class="close-card"><span class="card-title"><%= space.title %><i class="right">X</i></span></div>
                    <p> <%=space.street_address%> | <%=space.city%> | <%=space.zip_code%> </p>
                    <p><%= space.description %></p>
+                   <br>
+                   <%= button_to "See Listing Details", space_path(space.id), method: "get", class: "btn waves-effect waves-light" %>
+                   <br>
+                   <% if current_user %>
+                     <%= button_to "Rent this space", new_space_transaction_path(space.id), method: "get", class: "waves-effect waves-light btn" %>
+                   <% else %>
+                     <h5>
+                      <%= link_to "Log In", login_path %>
+                      or
+                      <%= link_to "Sign Up", new_user_path %>
+                      to rent this space
+                    </h5>
+                   <% end %>
                  </div>
                </div>
              </li>
@@ -40,12 +47,6 @@
      </div>
 
     <div class="col l6 m12 s12">
-      <div class="row">
-        <div class="col l12 m12 s12">
-          <h3 class="center-align">Local Spaces</h3>
-        </div>
-      </div>
-
       <div class="map_container">
         <div id='map' class='map pad2'></div>
       </div>

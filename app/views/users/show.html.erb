@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col l5 offset-l1">
+    <div class="col l6">
       <br>
       <%= image_tag @user.avatar.url(:thumb) %>
       <hr>
@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col l5 offset-l1">
+    <div class="col l6">
       <h3>Your spaces:</h3>
       <hr>
     </div>
@@ -39,16 +39,25 @@
     </div>
   </div>
   <div class="row">
-    <div class="col l5 offset-l1">
+    <div class="col l6">
       <% @spaces.each do |space| %>
-        <div>
-          <ul>
-            <li><strong>Space:  </strong><%= space.title %></li>
-            <li><strong>Address:  </strong><%= space.street_address %></li>
-            <li><strong>Price per month:  </strong><%= space.price %></li>
-            <li><strong>Square footage:  </strong><%= space.size %></li>
-            <li><strong>Availability:  </strong><%= space.available ? "Available" : "Not Available" %></li>
-          </ul>
+        <div class="row">
+          <div class="col l6">
+            <ul>
+              <li><strong>Space:  </strong><%= space.title %></li>
+              <li><strong>Address:  </strong><%= space.street_address %></li>
+              <li><strong>Price per month:  </strong><%= space.price %></li>
+              <li><strong>Square footage:  </strong><%= space.size %></li>
+              <li><strong>Availability:  </strong><%= space.available ? "Available" : "Not Available" %></li>
+            </ul>
+          </div>
+          <div class="col l6">
+            <%= button_to "Edit Listing", edit_space_path, method: "get", :class => "btn waves-effect waves-light" %>
+            <br>
+            <%= button_to "Delete Listing", destroy_space_path, method: "delete", data: {confirm: "Are you sure you want to delete the profile for #{ @space.title }?"}, :class => "btn waves-effect waves-light" %>
+            <br>
+            <%= button_to "Re-list Space", destroy_space_path, method: "delete", data: {confirm: "Are you sure you want to delete the profile for #{ @space.title }?"}, :class => "btn waves-effect waves-light" %>
+          </div>
         </div>
       <hr>
       <% end %>
