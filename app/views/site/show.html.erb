@@ -22,14 +22,16 @@
                    <img class="activator photoArea" src="<%=space.photo%> ">
                  </div>
                  <div class="card-content">
-                   <span class="card-title activator grey-text text-darken-4"> <%= space.title %> | <%= space.street_address %> </span>
+                   <p class="card-title activator grey-text text-darken-4"> <%= space.title %><i class="material-icons md-18 right">more_vert</i></p>
+                   <p><%= space.street_address %> </p>
                    <p>Price: $<%= space.price %></p>
-                   <p>Rental Term:</p>
                    <p>Square Feet: <%= space.size %></p>
                  </div>
                  <div class="card-reveal">
                    <div class="close-card"><span class="card-title"><%= space.title %><i class="right">X</i></span></div>
-                   <p> <%=space.street_address%> | <%=space.city%> | <%=space.zip_code%> </p>
+                   <p> <%=space.street_address%></p>
+                   <p>Price: $<%= space.price %></p>
+                   <p>Square Feet: <%= space.size %></p>
                    <p><%= space.description %></p>
                  </div>
                </div>
