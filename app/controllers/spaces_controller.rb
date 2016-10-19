@@ -14,7 +14,7 @@ class SpacesController < ApplicationController
   def create
       @space = Space.create(space_params)
       flash[:notice] = "Your listing was successfully created"
-      redirect_to spaces_path
+      redirect_to user_path(@space.user_id)
   end
 
   def edit

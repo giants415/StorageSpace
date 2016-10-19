@@ -10,6 +10,11 @@
 
     <br>
     <div class="col l6 m12 s12">
+      <div class="row">
+        <div class="col l12 m12 s12">
+          <h3 class="center-align">All Available Listings</h3>
+        </div>
+      </div>
       <div class="slider">
          <ul class="slides card">
            <% @spaces.each do |space| %>
@@ -19,14 +24,16 @@
                    <img class="activator photoArea" src="<%=space.photo%> ">
                  </div>
                  <div class="card-content">
-                   <span class="card-title activator grey-text text-darken-4"> <%= space.title %> | <%= space.street_address %> </span>
+                   <p class="card-title activator grey-text text-darken-4"> <%= space.title %><i class="material-icons md-18 right">more_vert</i></p>
+                   <p><%= space.street_address %> </p>
                    <p>Price: $<%= space.price %></p>
-                   <p>Rental Term:</p>
                    <p>Square Feet: <%= space.size %></p>
                  </div>
                  <div class="card-reveal">
-                   <div class="close-card"><span class="card-title"><%= space.title %><i class="right">X</i></span></div>
-                   <p> <%=space.street_address%> | <%=space.city%> | <%=space.zip_code%> </p>
+                   <div class="close-card"><span class="card-title"><%= space.title %><i class="material-icons md-18 right">close</i></span></div>
+                   <p> <%=space.street_address%></p>
+                   <p>Price: $<%= space.price %></p>
+                   <p>Square Feet: <%= space.size %></p>
                    <p><%= space.description %></p>
                    <br>
                    <% if current_user %>
