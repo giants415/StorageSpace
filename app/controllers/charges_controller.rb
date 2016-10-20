@@ -24,9 +24,9 @@ def create
 
     @amount = (@amount * 100).to_i # Must be an integer!
 
-    if @amount < 500
-      flash[:error] = 'Charge not completed. Donation amount must be at least $5.'
-      redirect_to new_charge_path
+    if @amount < 1
+      # flash[:error] = 'Charge not completed. Donation amount must be at least $5.'
+      redirect_to new_transaction_charge_path(@transaction.id)
       return
     end
 
@@ -44,7 +44,7 @@ def create
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
+    redirect_to new_transaction_charge_path(@transaction.id)
   end
 
 end
