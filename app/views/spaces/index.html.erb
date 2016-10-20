@@ -1,4 +1,4 @@
-<h1 class="center-align"> Call to Action </h1>
+<h1 class="center-align"> All Spaces Available </h1>
 <div class="divider"></div>
 
 <div class="container">
@@ -24,6 +24,17 @@
             <span class="card-title"><%= space.title %><i class="right">X</i></span>
             <p> <%=space.street_address%> | <%=space.city%> | <%=space.zip_code%> </p>
             <p><%= space.description %></p>
+            <br>
+            <% if current_user %>
+              <%= button_to "Rent this space", new_space_transaction_path(space.id), method: "get", class: "waves-effect waves-light btn" %>
+            <% else %>
+              <h5>
+               <%= link_to "Log In", login_path %>
+               or
+               <%= link_to "Sign Up", new_user_path %>
+               to rent this space
+             </h5>
+            <% end %>
           </div>
         </div>
         <%end%>
