@@ -1,3 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col l8 offset-l2 s12">
+
+      <h1>Rental Agreement</h1>
+      <h4><strong>Renter: </strong><%= User.find_by_id(@transaction.user_id).name %></h4>
+      <h4><strong>Owner: </strong><%= User.find_by_id(@space.user_id).name %></h4>
+
+      <h5><strong>Space: </strong><%= @space.title %></h5>
+      <ul>
+        <li><strong>Address:  </strong><%= @space.street_address %></li>
+        <li><strong>Price per 30 days:  </strong><%= @space.price %></li>
+        <li><strong>Square footage:  </strong><%= @space.size %></li>
+        <li><strong>Start date:  </strong><%= @transaction.start_date %></li>
+        <li><strong>End date:  </strong><%= @transaction.end_date %></li>
+        <li><strong>Availability:  </strong><%= @space.available ? "Available" : "Not Available" %></li>
+      </ul>
+
+
+    </div>
+  </div>
+</div>
+
+
+
 <%= form_tag charges_path do%>
   <article>
     <% if flash[:error].present? %>
@@ -6,7 +31,7 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: $<%= text_field_tag(:amount, @space.price, :disabled=>true) %></span>
+      <span>Amount: $<%= text_field_tag(:amount, '%.2f' % (@space.price*((@transaction.end_date-@transaction.start_date)/30)), :disabled=>true) %></span>
     </label>
   </article>
 

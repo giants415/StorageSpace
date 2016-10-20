@@ -14,7 +14,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.create(transaction_params)
     @space.available = false
     @space.save
-    redirect_to space_transaction_path(@space.id, @transaction.id)
+    redirect_to new_transaction_charge_path(@transaction.id)
   end
 
   private
