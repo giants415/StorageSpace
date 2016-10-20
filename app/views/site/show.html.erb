@@ -94,7 +94,7 @@
   })
 
   map.on('load', function () {
-    var geojson = [];
+    geojson = []
     <% @spaces.each do |space| %>
       long = <%= space.longitude %>
       lat = <%= space.latitude %>
