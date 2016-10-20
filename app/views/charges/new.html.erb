@@ -63,9 +63,10 @@
                     <p class = "notice"><%= flash[:error] %></p>
                   </div>
                 <% end %>
-                <label class="amount">
-                  <span>Amount: $<%= text_field_tag(:amount, '%.2f' % (@space.price*((@transaction.end_date-@transaction.start_date)/30))) %></span>
-                </label>
+                <div>
+                  Amount: $<%= ('%.2f' % (@space.price*((@transaction.end_date-@transaction.start_date)/30))) %>
+                </div>
+                <span><%= hidden_field_tag(:amount, '%.2f' % (@space.price*((@transaction.end_date-@transaction.start_date)/30))) %></span>
               </article>
 
               <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
