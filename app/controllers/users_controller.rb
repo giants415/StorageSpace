@@ -56,6 +56,7 @@ class UsersController < ApplicationController
       # flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
       # Please sign in to continue."
       login(user)
+      flash[:notice] = "Successfully verified email!"
       redirect_to user
     else
       # flash[:error] = "Sorry. User does not exist"

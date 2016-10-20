@@ -26,7 +26,7 @@ class SpacesController < ApplicationController
     space_id = params[:id]
     space = Space.find_by_id(space_id)
     space.update_attributes(space_params)
-    redirect_to space_path(space)
+    redirect_to user_path(current_user.id)
   end
 
   def destroy

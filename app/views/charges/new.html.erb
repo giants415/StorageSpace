@@ -1,21 +1,109 @@
-<%= form_tag charges_path do%>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p class = "notice"><%= flash[:error] %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StorageSpace</title>
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.21.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.21.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div class="nav-wrapper" id="navBar">
+          <p class="brand-logo left"><%= link_to "StorageSpace", root_path %></p>
+          <ul id="nav-mobile" class="right">
+
+            <% if current_user %>
+            <li><%= link_to "List Your Space", new_space_path %></li>
+            <li><%= link_to "Profile", user_path(current_user) %></li>
+            <li><%= link_to "Log Out", logout_path %></li>
+
+            <% else %>
+            <li><%= link_to "Log In", login_path %></li>
+            <li><%= link_to "Sign Up", new_user_path %></li>
+
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col l8 offset-l2 s12">
+
+            <h1>Rental Agreement</h1>
+            <h4><strong>Renter: </strong><%= User.find_by_id(@transaction.user_id).name %></h4>
+            <h4><strong>Owner: </strong><%= User.find_by_id(@space.user_id).name %></h4>
+
+            <h5><strong>Space: </strong><%= @space.title %></h5>
+            <ul>
+              <li><strong>Address:  </strong><%= @space.street_address %></li>
+              <li><strong>Price per 30 days:  </strong><%= @space.price %></li>
+              <li><strong>Square footage:  </strong><%= @space.size %></li>
+              <li><strong>Start date:  </strong><%= @transaction.start_date %></li>
+              <li><strong>End date:  </strong><%= @transaction.end_date %></li>
+              <li><strong>Availability:  </strong><%= @space.available ? "Available" : "Not Available" %></li>
+            </ul>
+
+            <%= form_tag charges_path do%>
+              <article>
+                <% if flash[:error].present? %>
+                  <div id="error_explanation">
+                    <p class = "notice"><%= flash[:error] %></p>
+                  </div>
+                <% end %>
+                <div>
+                  Amount: $<%= ('%.2f' % (@space.price*((@transaction.end_date-@transaction.start_date)/30))) %>
+                </div>
+                <span><%= hidden_field_tag(:amount, '%.2f' % (@space.price*((@transaction.end_date-@transaction.start_date)/30))) %></span>
+              </article>
+
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                      data-description="A month's subscription"
+                      data-amount= <%= number_to_currency(@space.price * 100) %>
+                      data-locale="auto">
+              </script>
+            <% end %>
+          </div>
+        </div>
       </div>
-    <% end %>
-    <label class="amount">
-      <span>Amount: $<%= text_field_tag(:amount, @space.price) %></span>
-    </label>
-  </article>
+    </main>
 
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="A month's subscription"
-            data-amount= <%= number_to_currency(@space.price * 100) %>
-            data-locale="auto">
-    </script>
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 m6 s12 center-align">
+            <h5 class="white-text"><%= link_to "See all spaces", spaces_path, {:style=>'color:#FFFFFF;', :class => "css_class"} %></h5>
+          </div>
+          <div class="col l6 m6 s12 center-align">
+            <h5 class="white-text"><%= link_to "About us", site_index_path, {:style=>'color:#FFFFFF;', :class => "css_class"} %></h5>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2016 StorageSpace
+        <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
 
 
-<% end %>
+
+
+
+

@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def default_url_options
+    if Rails.env.production?
+      {:host => "localhost:3000"}
+    else
+      {:host => "localhost:3000"}
+    end
+  end
 end

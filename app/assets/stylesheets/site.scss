@@ -13,3 +13,15 @@
     transform: translate(-50%, -50%);
   }
 }
+
+.img-holder {
+  position: relative;
+}
+
+.img-holder .call-to-action {
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    top: 40%;
+    bottom: 25%;
+}

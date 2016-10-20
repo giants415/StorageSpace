@@ -1,27 +1,40 @@
-<div class="full-width">
-  <img src="http://www.247householdstoragebangalore.com/images/bangalore.jpg" class="responsive-img"/>
-  <div class="full-width-content">
-    <h1 class="center-align"> Call to Action </h1>
-  </div>
-</div>
+<!-- <div class="full-width"> -->
+
+  <!-- <div class="img-holder"> -->
+    <div class="img-holder">
+      <!-- <img image_path('Homepage_image.jpg') class="responsive-img" style='background-size:100%; object-fit: contain'/> -->
+      <%= image_tag "homepage_image.jpg", class: "responsive-img" %>
+      <br>
+      <div class="call-to-action">
+
+          <div class="row">
+            <div class="col l6 m6 s6 center-align">
+              <%= button_to "See All Spaces", spaces_path, method: "get", class: "btn waves-effect waves-light btn-large" %>
+            </div>
+            <div class="col l6 m6 s6 center-align">
+              <%= button_to "List Your Space", new_space_path, method: "get", class: "btn waves-effect waves-light btn-large" %>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  <!-- </div> -->
+
+<!-- </div> -->
+
 <div class="container">
 
   <div class="row">
 
     <br>
     <div class="col l6 m12 s12">
-      <div class="row">
-        <div class="col l12 m12 s12">
-          <h3 class="center-align">All Available Listings</h3>
-        </div>
-      </div>
       <div class="slider">
          <ul class="slides card">
            <% @spaces.each do |space| %>
             <li>
                <div class="card">
                  <div class="card-image waves-effect waves-block waves-light">
-                   <img class="activator photoArea" src="<%=space.photo%> ">
+                    <%= image_tag (space.photo ? space.photo : space.photo1.url(:medium)), class: "activator photoArea" %>
                  </div>
                  <div class="card-content">
                    <p class="card-title activator grey-text text-darken-4"> <%= space.title %><i class="material-icons md-18 right">more_vert</i></p>
@@ -60,16 +73,6 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col l3 m12 s12 center-align">
-        <%= button_to "See All Spaces", spaces_path, method: "get", class: "btn waves-effect waves-light" %>
-      </div>
-      <br>
-      <div class="col l3 m12 s12 center-align">
-        <%= button_to "List Your Space", new_space_path, method: "get", class: "btn waves-effect waves-light" %>
-      </div>
-    </div>
-
   </div>
 
 </div>
@@ -94,7 +97,7 @@
   })
 
   map.on('load', function () {
-    var geojson = [];
+    geojson = []
     <% @spaces.each do |space| %>
       long = <%= space.longitude %>
       lat = <%= space.latitude %>
