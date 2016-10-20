@@ -1,12 +1,20 @@
-<h1> Edit your listing </h1>
+<div class="container">
+  <h1> Edit your listing </h1>
 
-<%= form_for @space do |f| %>
-  <%= f.text_field :title, placeholder: "Listing Name" %>
-  <%= f.number_field :price, in: 1.00..3000.00, placeholder: "Price" %>
-  <%= f.text_field :street_address, placeholder: "eg. 123 Sample Lane, Sample City, Sample State, 55555" %>
-  <%= f.number_field :size, in: 10.0..200, placeholder: "Estimated Square Feet" %>
-  <%= f.text_area :description, placeholder: "Describe your space" %>
-  Upload photos:<br>
-  <%= f.file_field :photo1 %>
-  <%= f.submit "Save your changes", :class => "waves-effect waves-light btn" %>
-<% end %>
+  <%= form_for @space do |f| %>
+    <label>Listing Name</label>
+    <%= f.text_field :title, placeholder: "Listing Name" %>
+    <label>Listing Price</label>
+    <%= f.number_field :price, in: 1.00..3000.00, placeholder: "Price" %>
+    <label>Listing Address</label>
+    <%= f.text_field :street_address, placeholder: "eg. 123 Sample Lane, Sample City, Sample State, 55555" %>
+    <label>Space Size (in sq. ft.)</label>
+    <%= f.number_field :size, in: 10.0..200, placeholder: "Estimated Square Feet" %>
+    <label>Listing Description</label>
+    <%= f.text_area :description, placeholder: "Describe your space" %>
+    <label>Listing Photos</label>
+    <br> Upload photos:<br>
+    <%= f.file_field :photo1 %>
+    <%= f.submit "Save your changes", :class => "waves-effect waves-light btn" %>
+  <% end %>
+</div>
