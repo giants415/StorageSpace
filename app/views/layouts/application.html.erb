@@ -19,8 +19,8 @@
     <header>
       <nav>
         <div class="nav-wrapper" id="navBar">
-          <p class="brand-logo"><%= link_to "StorageSpace", root_path %></p>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <p class="brand-logo left"><%= link_to "StorageSpace", root_path %></p>
+          <ul id="nav-mobile" class="right">
 
             <% if current_user %>
             <li><%= link_to "List Your Space", new_space_path %></li>
