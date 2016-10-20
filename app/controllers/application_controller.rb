@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     if Rails.env.production?
-      {:host => "localhost:3000"}
+      {:host => "https://young-ravine-84460.herokuapp.com/"}
     else
       {:host => "localhost:3000"}
     end
