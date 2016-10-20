@@ -6,7 +6,7 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: $<%= text_field_tag(:amount, @space.price) %></span>
+      <span>Amount: $<%= text_field_tag(:amount, @space.price, :disabled=>true) %></span>
     </label>
   </article>
 
