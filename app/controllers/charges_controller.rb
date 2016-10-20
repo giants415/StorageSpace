@@ -11,14 +11,14 @@ class ChargesController < ApplicationController
 def create
 
     @amount = params[:amount]
-
+    # logger.debug "the value of amount is #{@amount}"
     @amount = @amount.gsub('$', '').gsub(',', '')
 
     begin
       @amount = Float(@amount).round(2)
     rescue
       flash[:error] = 'Charge not completed. Please enter a valid amount in USD ($).'
-      redirect_to new_charge_path
+      redirect_to new_transaction_charge_path(@transaction.id)
       return
     end
 

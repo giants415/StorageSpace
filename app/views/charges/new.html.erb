@@ -31,7 +31,7 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: $<%= text_field_tag(:amount, '%.2f' % (@space.price*((@transaction.end_date-@transaction.start_date)/30)), :disabled=>true) %></span>
+      <span>Amount: $<%= text_field_tag(:amount, '%.2f' % (@space.price*((@transaction.end_date-@transaction.start_date)/30))) %></span>
     </label>
   </article>
 
